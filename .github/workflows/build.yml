@@ -25,6 +25,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
+      - name: Install GTK4 Glib
+        run: |
+          sudo apt-get update
+          sudo apt install -y libgtk-4-dev
+
       - name: Check GTK4 Glib
         run: dpkg -l libgtk* | grep -e '^i' | grep -e 'libgtk-*[0-9]'
